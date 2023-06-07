@@ -13,34 +13,38 @@ class UsuarioController extends Controller
     {
         $this->usuario = new Usuario();
     }
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
         $usuarios = $this->usuario->all();
+        var_dump($usuarios);
         return view("usuario/listar", ['usuarios' => $usuarios]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         return view('usuario/cadastrar');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         $adicionar = $this->usuario->create(
             [
+//protected $fillable = ['nome','sobrenome','email','cpf', 'uf', 'celular', 'senha', 'idade', 'sexo', 'tipo_usuario', 'endereco', 'bairro', 'numero'];
+    
                 'nome' => $request->input('nome'),
                 'sobrenome' => $request->input('sobrenome'),
                 'email' => $request->input('email'),
+                'cpf' => $request->input('cpf'),
+                'uf' => $request->input('uf'),
+                'celular' => $request->input('celular'),
                 'senha' => password_hash($request->input('senha'), PASSWORD_DEFAULT),
+                'idade' => $request->input('idade'),
+                'sexo' => $request->input('sexo'),
+                'tipo_usuario' => 'cliente',
+                'endereco' => $request->input('endereco'),
+                'bairro' => $request->input('bairro'),
+                'numero' => $request->input('numero'),
             ]
         );
         if($adicionar){
@@ -49,9 +53,6 @@ class UsuarioController extends Controller
         return redirect()->back()->with('Erro', 'Erro ao cadastrar um usuario');
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(Usuario $usuario)
     {
         $usuario = $this->usuario->find($usuario);
@@ -59,9 +60,6 @@ class UsuarioController extends Controller
         return view ("usuario/ver", ['usuario' => $usuario]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(Usuario $usuario)
     {
         $usuario = $this->usuario->find($usuario);
@@ -69,11 +67,6 @@ class UsuarioController extends Controller
         return view ("usuario/editar", ['usuario' => $usuario]);
     }
 
-
-
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, string $id)
     {
         $update = $this->usuario->where('id', $id)->update($request->except("_token", "_method"));
@@ -84,9 +77,6 @@ class UsuarioController extends Controller
         return redirect()->back()->with('Erro', 'erro ao realizar o update das informações');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Usuario $usuario)
     {
         $deletar = $this->usuario->where('id', $usuario->id)->delete();

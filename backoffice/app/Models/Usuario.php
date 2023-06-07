@@ -20,26 +20,8 @@ class Usuario extends Authenticatable
 
     protected $table = 'usuarios';
     protected $primaryKey = 'id';
-    protected $fillable = ['nome','sobrenome','email','senha',];
+    protected $fillable = ['nome','sobrenome','email','cpf', 'uf', 'celular', 'senha', 'idade', 'sexo', 'tipo_usuario', 'endereco', 'bairro', 'numero'];
     public $timestamps = false;
 
-    // /**
-    //  * The attributes that should be hidden for serialization.
-    //  *
-    //  * @var array<int, string>
-    //  */
-    // protected $hidden = [
-    //     'senha',
-    //     'remember_token',
-    // ];
 
-    // /**
-    //  * The attributes that should be cast.
-    //  *
-    //  * @var array<string, string>
-    //  */
-    // protected $casts = [
-    //     'email_verified_at' => 'datetime',
-    //     'senha' => 'hashed',
-    // ];
 }
