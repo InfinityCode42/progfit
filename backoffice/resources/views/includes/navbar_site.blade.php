@@ -1,7 +1,7 @@
 <div class="container-fluid p-0 nav-bar">
     <nav class="navbar navbar-expand-lg bg-none navbar-dark py-0" style="background: rgba(0, 0, 0, 0.5);">
 
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="margin-top: 20px;margin-bottom: 20px;">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent" style="height: 90px;">
@@ -10,19 +10,23 @@
             </a>
             <ul class="navbar-nav">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">SOBRE <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="#sobre">SOBRE <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">COMO COMEÇAR?</a>
+                    <a class="nav-link" href="#como_comecar">COMO COMEÇAR?</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">TIME</a>
+                    <a class="nav-link" href="#time">TIME</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">CONTATOS</a>
+                    <a class="nav-link" href="#contatos">CONTATOS</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/usuario">ÁREA DO ALUNO</a>
                 </li>
 
             </ul>
         </div>
     </nav>
 </div>
+
