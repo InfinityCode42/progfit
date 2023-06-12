@@ -8836,7 +8836,7 @@ border-radius: 4px;
     margin-top: 20px;
 }
 
-@media(min-width: 600px){
+@media(min-width: 1080px){
 
     .background{
         display: flex;
@@ -8935,7 +8935,6 @@ border-radius: 4px;
     .card_inicio_site_dois{
 
         margin-bottom: 20px;
-
     }
     .card_inicio_site_tres{
 
@@ -8978,7 +8977,103 @@ border-radius: 4px;
         background-color: #DED8BD;
         color: #000;
     }
+    .texto_sobre{
+        font-size: 25px;
+    }
+    .card_como_comecar_numero_um h2, .card_como_comecar_numero_dois h2, .card_como_comecar_numero_tres h2{
+        font-size: 20px;
+    }
 
+}
+@media (min-width: 768px){
+    .container_cards_inicio_site{
+        margin-top: -100px;
+    }
+    .background{
+        display: flex;
+    }
+
+    .titulo_card_inicio_site{
+        font-size: 20px;
+    }
+    .subtitulo_card_inicio_site{
+        font-size: 20px;
+    }
+    .card_inicio_site_um{
+        width: 32rem;
+        height: 30rem;
+        border-radius: 10px;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        margin-right: 25px;
+    }
+    .card_inicio_site_dois{
+        width: 18rem;
+        height: 22rem;
+        border-radius: 10px;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        margin-right: 25px;
+        color: #000000;
+    }
+    .card_inicio_site_tres{
+        width: 18rem;
+        height: 22rem;
+        border-radius: 10px;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        margin-right: 25px;
+    }
+    .card_inicio_site_quatro{
+        width: 18rem;
+        height: 22rem;
+        border-radius: 10px;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        margin-right: 25px;
+    }
+    .img_card_inicio_site{
+        width: 50px;
+    }
+    .titulo-sobre{
+        font-size: 40px;
+        margin-bottom: 40px;
+    }
+    .container_sobre{
+        padding: 10%;
+    }
+    .botao_ir_para_topo{
+        position: fixed;
+        bottom: 30px;
+        left: 95%;
+        z-index: 11;
+        -webkit-animation: action 1s infinite alternate;
+        animation: action 1s infinite alternate;
+        background-color: #DED8BD;
+        color: #000;
+    }
+    .personalizacao h1,
+    .flexibilidade h1,
+    .acompanhamento h1 {
+        font-size: 30px;
+        color: #fff;
+        text-align: center;
+    }
+    .personalizacao h2,
+    .flexibilidade h2,
+    .acompanhamento h2 {
+        font-size: 20px;
+        color: #fff;
+        text-align: center;
+    }
+    .card_como_comecar_numero_um, .card_como_comecar_numero_dois, .card_como_comecar_numero_tres{
+        height: 35rem;
+    }
+    .card_como_comecar_numero_um h2, .card_como_comecar_numero_dois h2, .card_como_comecar_numero_tres h2{
+        font-size: 20px;
+    }
+    .conteudos_meio_site{
+        background: #0000;
+    }
+    .texto_sobre{
+        font-size: 30px;
+    }
 }
 
 .card-body h1,
@@ -8987,7 +9082,6 @@ border-radius: 4px;
 }
 .card_como_comecar_numero_um, .card_como_comecar_numero_dois, .card_como_comecar_numero_tres{
     border-radius: 16px;
-
 }
 .cor_dourado_site{
     color:#DED8BD;

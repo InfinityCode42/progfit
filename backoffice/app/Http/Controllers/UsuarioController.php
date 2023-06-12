@@ -17,7 +17,7 @@ class UsuarioController extends Controller
     public function index()
     {
         $usuarios = $this->usuario->all();
-        var_dump($usuarios);
+
         return view("usuario/listar", ['usuarios' => $usuarios]);
     }
 
@@ -30,8 +30,7 @@ class UsuarioController extends Controller
     {
         $adicionar = $this->usuario->create(
             [
-//protected $fillable = ['nome','sobrenome','email','cpf', 'uf', 'celular', 'senha', 'idade', 'sexo', 'tipo_usuario', 'endereco', 'bairro', 'numero'];
-    
+
                 'nome' => $request->input('nome'),
                 'sobrenome' => $request->input('sobrenome'),
                 'email' => $request->input('email'),

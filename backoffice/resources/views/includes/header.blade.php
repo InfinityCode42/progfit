@@ -21,7 +21,7 @@
         <link href="lib/flaticon/font/flaticon.css" rel="stylesheet">
         <Link rel="icon" href ="img/logo_site.svg" Type = "image/x-icon">
 
-        <!-- <link id="favicon" rel="shortcut icon" type="image/png" href="" src="/img/icon.jpg"> -->
+        <link id="favicon" rel="shortcut icon" type="image/png" href="img/logo_site.png" src="/img/icon.jpg">
         <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
 
         <title>PROG.FIT</title>

@@ -68,7 +68,7 @@
                     <div class="col-12 col-md-8">
                         <div class="card" style="border: none; background: #DEE4E4; box-shadow: none;">
                             <div class="card-body" >
-                                <h1 class="" style="color: #000000;">A PROG.FIT é uma empresa que oferece
+                                <h1 class="texto_sobre" style="color: #000000;">A PROG.FIT é uma empresa que oferece
                                     consultoria online de treinamento físico para
                                     pessoas que buscam alcançar seus objetivos
                                     de forma saudável e eficiente. Nossa equipe
@@ -97,7 +97,7 @@
 
 
 <div class="container-fluid" style="background: url(img/pexels-leon-ardho.png); background-size: cover;">
-    <div class="row justify-content-center align-items-center">
+    <div class="row justify-content-center align-items-center" style="background: rgba(0,0,0, 0.7);">
         <div class="col-12 d-lg-flex d-xl-flex col-lg-8 col-xl-8 com-md-12 col-sm-12">
             <div class="conteudos_meio_site row justify-content-center">
                 <div class="col-12 col-lg-4 col-xl-4 col-md-4 col-sm-12 mb-4">
@@ -134,30 +134,30 @@
 
 <div class="container-fluid">
     <h1 class="d-flex align-content-center justify-content-center font-weight-bold titulo-sobre" id="como_comecar" style="margin-top: 5%; margin-bottom: 5%; color: #000000;">COMO COMEÇAR?</h1>
-    <div class="row justify-content-center align-items-center">
-        <div class="col-12 d-lg-flex d-xl-flex col-lg-8 col-xl-8 com-md-12 col-sm-12">
+    <div class="row justify-content-center align-items-center" >
+        <div class="col-12 d-lg-flex d-xl-flex d-md-flex col-lg-8 col-xl-8 com-md-12 col-sm-12">
             <div class="row justify-content-center">
-                <div class="col-12 col-lg-4 col-xl-4 col-md-4 col-sm-12 mb-4">
+                <div class="col-12 col-lg-4 col-xl-4 col-md-12 col-sm-12 mb-4">
                     <div class="card">
                         <div class="card-body background_cards card_como_comecar_numero_um text-left">
                             <h1 class="cor_dourado_site font-weight-bold">1.</h1>
-                            <h2 class="cor_dourado_site font-weight-bold">Envie uma mensagem para o nosso WhatsApp e preencha o questionário sobre seu histórico físico e saúde. Com base nas informações fornecidas, será realizada uma reunião inicial com um profissional, que irá projetar um programa de treinamento personalizado exclusivamente para você. <br><br></h2>
+                            <h2 class="cor_dourado_site font-weight-bold">Envie uma mensagem para o nosso WhatsApp e preencha o questionário sobre seu histórico físico e saúde. Com base nas informações fornecidas, será realizada uma reunião inicial com um profissional, que irá projetar um programa de treinamento personalizado exclusivamente para você.</h2>
                         </div>
                     </div>
                 </div>
-                <div class="col-12 col-lg-4 col-xl-4 col-md-4 col-sm-12 mb-4">
+                <div class="col-12 col-lg-4 col-xl-4 col-md-12 col-sm-12 mb-4">
                     <div class="card">
                         <div class="card-body background_cards card_como_comecar_numero_dois text-left">
                             <h1 class="cor_dourado_site font-weight-bold">2.</h1>
-                            <h2 class="cor_dourado_site font-weight-bold">Após realizar a primeira consultoria você receberá o seu programa de treinamento de forma limpa, e simples de entender. Durante as semanas de treinamento você receberá todo o suporte até a próxima consultoria. <br><br><br><br><br><br><br><br></h2>
+                            <h2 class="cor_dourado_site font-weight-bold">Após realizar a primeira consultoria você receberá o seu programa de treinamento de forma limpa, e simples de entender. Durante as semanas de treinamento você receberá todo o suporte até a próxima consultoria.</h2>
                         </div>
                     </div>
                 </div>
-                <div class="col-12 col-lg-4 col-xl-4 col-md-4 col-sm-12 mb-4">
+                <div class="col-12 col-lg-4 col-xl-4 col-md-12 col-sm-12 mb-4">
                     <div class="card">
                         <div class="card-body background_cards card_como_comecar_numero_tres text-left">
                             <h1 class="cor_dourado_site font-weight-bold">3.</h1>
-                            <h2 class="cor_dourado_site font-weight-bold">Você realizará consultorias semanais ou mensais, de acordo com seu plano e necessidade, para conversar sobre seu programa de treinamento e realizar as adaptações necessárias. Tendo também acesso a recursos adicionais, como vídeos de exercícios, planilhas de treinamento e dicas de saúde e bem-estar.<br><br><br></h2>
+                            <h2 class="cor_dourado_site font-weight-bold">Você realizará consultorias semanais ou mensais, de acordo com seu plano e necessidade, para conversar sobre seu programa de treinamento e realizar as adaptações necessárias. Tendo também acesso a recursos adicionais, como vídeos de exercícios, planilhas de treinamento e dicas de saúde e bem-estar.</h2>
                         </div>
                     </div>
                 </div>
@@ -168,7 +168,7 @@
 
 <div class="container-fluid mt-5" id="time">
     <div class="row mt-5" style="background: url(img/pexels-tima-miroshnichenko.svg);background-size: cover;">
-        <div class="col-12">
+        <div class="col-12" style="background: rgba(0,0,0, 0.7);">
             <div class="time d-flex flex-column">
                 <h1 class="d-flex flex-sm-column justify-content-center align-content-center text-white mb-5 font-weight-bold titulo-sobre">TIME</h1>
                 <div class="d-lg-flex d-xl-flex align-content-center justify-content-center">

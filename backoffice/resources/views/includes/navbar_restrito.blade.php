@@ -22,10 +22,11 @@
                     <a class="nav-link" href="#contatos">CONTATOS</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('login.index')}}">ÁREA DO ALUNO</a>
+                    <a class="nav-link" href="/login">ÁREA DO ALUNO</a>
                 </li>
 
             </ul>
         </div>
     </nav>
 </div>
+
