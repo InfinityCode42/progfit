@@ -1,14 +1,20 @@
-@extends("../layouts/layout")
+<!DOCTYPE html>
+<html>
+@include('includes.header')
+<body>
+    @include('includes.navbar_dashboard')
 
-@section('content')
-<ul>
-    <h2>Usuarios</h2>
-    @foreach ($usuarios as $usuario)
-        <li>{{$usuario->nome}} |
-            <a href="{{route('usuario.edit', $usuario->id)}}">Editar</a> |
-            <a href="{{route('usuario.show', $usuario->id)}}">Mostrar</a>
-        </li>
-    @endforeach
-</ul>
+    <div class="container-fluid">
+        <div class="row">
+            @foreach ($usuarios as $usuario)
+                <ul>
+                    <li>{{$usuario->nome}} <a href="{{route('usuario.show', $usuario->id)}}">Ver</a></li>
+                </ul>
+            @endforeach
+        </div>
+    </div>
 
-@endsection
+</body>
+
+
+</html>

@@ -9,20 +9,8 @@
                 <img class="justify-content-center" src="img/logo_site.png" height="60" alt="">
             </a>
             <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#sobre">SOBRE <span class="sr-only">(current)</span></a>
-                </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#como_comecar">COMO COMEÇAR?</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#time">TIME</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#contatos">CONTATOS</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/login">ÁREA DO ALUNO</a>
+                    <a class="nav-link" href="/">VOLTAR PARA O SITE</a>
                 </li>
 
             </ul>

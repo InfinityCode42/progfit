@@ -13,31 +13,33 @@
     <div class="container-fluid mt-5">
         <div class="row  justify-content-center align-items-center d-flex-row text-center h-100">
             <div class="col-12 col-md-4 col-lg-3   h-50 ">
+
                 @error('error')
-                <div class="alert alert-danger">
-                    {{ $message }}
+                <div class="alert alert-danger" role="alert">
+                    <span class="d-flex text-danger">{{ $message }}</span>
                 </div>
                 @enderror
+                @error('email')
+                <div class="alert alert-danger" role="alert">
+                    <span class="d-flex text-danger">{{ $message }}</span>
+                </div>
+                @enderror
+
+                @error('senha')
+                <div class="alert alert-danger" role="alert">
+                    <span class="d-flex text-danger">{{ $message }}</span>
+                </div>
+                @enderror
+
                 <div class="card shadow">
                     <div class="card-body mx-auto">
+                        <h3 class="ont-weight-bold text-dark mb-3">Bem-vindo a PROG.FIT</h3>
                         <form action="{{route('login.store')}}" method="POST">
                             @csrf
 
-                            @error('email')
-                            <div class="alert alert-danger" role="alert">
-                                <span class="d-flex text-danger">{{ $message }}</span>
-                            </div>
-                            @enderror
-
-                            @error('senha')
-                            <div class="alert alert-danger" role="alert">
-                                <span class="d-flex text-danger">{{ $message }}</span>
-                            </div>
-                            @enderror
-
                             <div class="form-group input-group">
                                 <div class="input-group-prepend">
-                                <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+                                    <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
                                 </div>
                                 <input name="email" class="form-control" placeholder="Digite seu e-mail" type="email">
 
@@ -45,7 +47,7 @@
 
                             <div class="form-group input-group">
                                 <div class="input-group-prepend">
-                                <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                                    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
                                 </div>
                                 <input name="senha" class="form-control" placeholder="Digite sua senha" type="password">
                             </div>
@@ -57,7 +59,6 @@
                             <p class="text-center">Deseja voltar para o site?
                                 <a href="/" class="text-dark">Clique aqui</a>
                             </p>
-
                         </form>
                     </div>
                 </div>

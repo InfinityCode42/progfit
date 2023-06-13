@@ -46,7 +46,7 @@ class RestritoController extends Controller
         Auth::guard('web')->login($usuario);
 ;
 
-        return redirect()->route('usuario.index');
+        return redirect()->route('dashboard.index');
     }
     public function destroy()
     {

@@ -11,7 +11,7 @@
         <div class="col-12 d-lg-flex d-xl-flex justify-content-center align-items-center">
             <div class="background">
                 <div class="">
-                    <h1 class="text-white texto_progfit mt-5">Bem vindo a PROG.FIT</h1>
+                    <h1 class="text-white texto_progfit mt-5">Bem-vindo a PROG.FIT</h1>
                     <h2 class="text-white">A progressão que você sempre buscou</h2>
                 </div>
                 <div class="d-flex justify-content-center align-items-center">
