@@ -54,16 +54,16 @@ class UsuarioController extends Controller
 
     public function show(Usuario $usuario)
     {
-        $usuario = $this->usuario->find($usuario);
+        $usuarios = $this->usuario->find($usuario);
 
-        return view ("usuario/ver", ['usuario' => $usuario]);
+        return view ("usuario/ver", ['usuarios' => $usuarios]);
     }
 
     public function edit(Usuario $usuario)
     {
-        $usuario = $this->usuario->find($usuario);
+        $usuarios = $this->usuario->find($usuario);
 
-        return view ("usuario/editar", ['usuario' => $usuario]);
+        return view ("usuario/editar", ['usuarios' => $usuarios]);
     }
 
     public function update(Request $request, string $id)
@@ -71,9 +71,10 @@ class UsuarioController extends Controller
         $update = $this->usuario->where('id', $id)->update($request->except("_token", "_method"));
 
         if($update){
-            return redirect()->back()->with('Sucesso', 'update realizado com sucesso');
+            return redirect()->back()->with('Sucesso', 'Dados alterados com sucesso!!!');
         }
-        return redirect()->back()->with('Erro', 'erro ao realizar o update das informações');
+
+        return redirect()->back()->with('Erro', 'erro ao realizar a alteração das informações!!!');
     }
 
     public function destroy(Usuario $usuario)
