@@ -4,20 +4,36 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Usuario;
+use App\Models\AdmModulos;
+
 
 class DashboardController extends Controller
 {
 
     public readonly Usuario $usuario;
+    public readonly AdmModulos $admModulos;
+
+
     public function __construct()
     {
         $this->usuario = new Usuario();
+        $this->admModulos = new AdmModulos();
+        
     }
 
     public function index()
     {
-        $usuarios = $this->usuario->all();
-        return view("dashboard/index", ['usuarios' => $usuarios]);
+    
+        $usuarios = auth()->user();
+        $admModulos = $this->admModulos->all();
+
+        $dadosNecessarios = [
+            'usuarios' => $usuarios,
+            'adm_modulos' => $admModulos 
+        ];
+
+        $dados = compact('dadosNecessarios')['dadosNecessarios'];
+        return view("dashboard/index", compact('dados'));
     }
 
     public function create()
@@ -48,7 +64,14 @@ class DashboardController extends Controller
     public function destroy(Usuario $usuario)
     {
 
+    }
 
-
+    public function pre($dado){
+        echo '<pre>';
+        
+        echo var_dump($dado, true);
+        
+        echo '</pre>';
     }
 }
+

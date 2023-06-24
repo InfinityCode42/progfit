@@ -7,6 +7,9 @@
 
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
         <link rel="stylesheet" href="{{ asset('/css/style.css') }}" >
+        <link rel="stylesheet" href="{{ asset('/css/style_sidebar.css') }}" >
+        <link rel="stylesheet" href="{{ asset('/font-awesome-4.7.0/css/font-awesome.min.css') }}" >
+
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
         <link href="css/style.css" rel="stylesheet">
@@ -23,6 +26,8 @@
 
         <link id="favicon" rel="shortcut icon" type="image/png" href="img/logo_site.png" src="/img/icon.jpg">
         <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
+
+
 
         <title>PROG.FIT</title>
 
