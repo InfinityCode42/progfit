@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App\Models\AdmModulos;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -17,8 +18,12 @@ class AppServiceProvider extends ServiceProvider
     /**
      * Bootstrap any application services.
      */
-    public function boot(): void
+    public function boot()
     {
-        //
+
+        view()->composer('includes.sidebar', function ($view) {
+            $admModulos = AdmModulos::all();
+            $view->with('admModulos', $admModulos);
+        });
     }
 }

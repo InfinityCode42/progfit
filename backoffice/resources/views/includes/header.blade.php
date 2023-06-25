@@ -19,6 +19,8 @@
 
         <!-- Font Awesome -->
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+        <link flex href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+
 
         <!-- Flaticon Font -->
         <link href="lib/flaticon/font/flaticon.css" rel="stylesheet">

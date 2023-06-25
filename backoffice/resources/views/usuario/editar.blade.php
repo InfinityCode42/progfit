@@ -1,78 +1,188 @@
 <!DOCTYPE html>
+@include('includes.header')
 <html>
-    @include('includes.header')
-    <body>
-        @include('includes.navbar_dashboard')
-    @foreach ($usuarios as $usuario)
-        <section class="pt-5 pb-5 mt-0 align-items-center d-flex bg-dark" style="min-height: 100vh; background-size: cover; background-image: url(https://images.unsplash.com/photo-1477346611705-65d1883cee1e?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1920&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=c0d43804e2c7c93143fe8ff65398c8e9);">
-            <div class="container-fluid mt-5">
-                <div class="row  justify-content-center align-items-center d-flex-row text-center h-100">
-                    <div class="col-12 col-md-4 col-lg-3   h-50 ">
+@foreach ($usuarios as $usuario)
+    <div class="container-fluid mb-5">
+        <div class="row">
+            <div class="col-lg-3 mb-5">
+                @include('includes.navbar_dashboard')
+            </div>
+            <div class="col-lg-9">
+                <div class="row mb-5">
+                    <div class="col-12">
+                        @include('includes.sidebar')
+                    </div>
+                </div>
+                <div class="dados">
+                    <h1>Editar</h1>
+                    @if (session('Sucesso'))
+                        <div class="alert alert-success mt-3 ">
+                            {{ session('Sucesso') }}
+                        </div>
+                    @endif
+                    @if (session('Erro'))
+                        <div class="alert alert-danger mt-3 ">
+                            {{ session('Erro') }}
+                        </div>
+                    @endif
 
-                        @if(session('Sucesso'))
-                            <div class="alert alert-success mt-3 ">
-                                {{ session('Sucesso') }}
-                            </div>
-                        @endif
-                        @if(session('Erro'))
-                            <div class="alert alert-danger mt-3 ">
-                                {{ session('Erro') }}
-                            </div>
-                        @endif
+                    <style>
+                        .form-control,
+                        .custom-select {
+                            border-radius: 8px;
+                        }
+                    </style>
 
-                        <div class="card shadow">
-                            <div class="card-body mx-auto">
-                                <h3 class="ont-weight-bold text-dark mb-3">Olá {{$usuario->nome}}</h3>
-                                {{-- <div class="col-md-12 text-center bg-dark">
-                                    <img width="150" height="150" src="{{$usuario->foto}}" id="imgavatar"
-                                        class="mb-3 rounded-circle img-avatar" />
-                                    <input type="file" name="foto" id="avatar"
-                                        class="form-control d-none" accept=".jpg, .png, .jpeg">
-                                    <script>
-                                        $('#imgavatar').click(function () {
-                                            $('#avatar').trigger('click');
-                                        });
-                                        $('#avatar').change(function () {
-                                            var file = this.files[0];
-                                            var img = new Image();
-                                            var objectURL = URL.createObjectURL(file);
-                                            $('#imgavatar').attr('src', objectURL);
-                                        });
-                                    </script>
-                                </div> --}}
-                                <form action="{{route('usuario.update', ['usuario' => $usuario->id])}}" method="POST">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card p-3">
+                                <form action="{{ route('usuario.update', ['usuario' => $usuario->id]) }}"
+                                    method="POST">
                                     @csrf
+                                    <input type="hidden" class="" name="_method" value="PUT">
 
-                                    <input type="hidden"class="" name="_method" value="PUT">
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text" id="basic-addon1">Nome</span>
-                                        </div>
-                                        <input type="text" value="{{$usuario->nome}}" name="nome" class="form-control" placeholder="Digite seu nome..." aria-label="Username" aria-describedby="basic-addon1">
+                                    <div class="mb-3 form-group">
+                                        <label for="exampleInputEmail1" class="form-label">Nome</label>
+                                        <input type="text" value="{{ $usuario->nome }}" name="nome"
+                                            class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                                     </div>
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text" id="basic-addon1">Sobrenome</span>
-                                        </div>
-                                        <input type="text" value="{{$usuario->sobrenome}}" name="sobrenome" class="form-control" placeholder="Digite seu sobrenome..." aria-label="Username" aria-describedby="basic-addon1">
+                                    <div class="mb-3">
+                                        <label for="exampleInputEmail1" class="form-label">Sobrenome</label>
+                                        <input type="text" value="{{ $usuario->sobrenome }}" name="sobrenome"
+                                            class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                                     </div>
-                                    <div class="form-group input-group">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text" id="basic-addon1">E-mail</span>
-                                        </div>
-                                        <input name="email" value="{{$usuario->email}}" class="form-control" placeholder="Digite seu e-mail" type="email">
+                                    <div class="mb-3">
+                                        <label for="exampleInputEmail1" class="form-label">Email</label>
+                                        <input type="email" value="{{ $usuario->email }}" name="email"
+                                            class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                                     </div>
 
-                                    <div class="form-group ">
-                                        <button type="submit" class="btn background_cards btn-block" style="color: #DED8BD; border-radius: 16px;"> Alterar Dados </button>
+                                    <div class="row">
+                                        <div class="col-md-4 mb-3">
+                                            <label>Tipo Usuario</label>
+                                            <select value="{{ $usuario->tipo_usuario }}" class="custom-select"
+                                                name="tipo_usuario">
+                                                <option value="admin">Admin</option>
+                                                <option value="cliente">Cliente</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <label for="exampleInputEmail1" class="form-label">CPF</label>
+                                            <input type="tel" value="{{ $usuario->cpf }}" name="cpf"
+                                                class="form-control" id="exampleInputEmail1"
+                                                aria-describedby="emailHelp">
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <label for="exampleInputEmail1" class="form-label">UF</label>
+                                            <input type="text" value="{{ $usuario->uf }}" name="uf"
+                                                class="form-control" id="exampleInputEmail1"
+                                                aria-describedby="emailHelp">
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-4 mb-3">
+                                            <label for="exampleInputPassword1" class="form-label">Celular</label>
+                                            <input type="tel" value="{{ $usuario->celular }}" name="celular"
+                                                class="form-control" id="exampleInputPassword1">
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <label for="exampleInputPassword1" class="form-label">Senha</label>
+                                            <input type="password" name="senha" class="form-control"
+                                                id="exampleInputPassword1">
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <label for="exampleInputPassword1" class="form-label">Idade</label>
+                                            <input type="tel" value="{{ $usuario->idade }}" name="idade"
+                                                class="form-control" id="exampleInputPassword1">
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-4 mb-3">
+                                            <label>Sexo</label>
+                                            <select value="{{ $usuario->sexo }}" class="custom-select" name="sexo">
+                                                <option value="M">Masculino</option>
+                                                <option value="F">Feminino</option>
+                                                <option value="O">Outro</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <button type="submit" class="btn btn-sucess mb-5"
+                                                style="background: green; color: white;">Alterar</button>
+                                        </div>
+                                    </div>
+                                </form>
+
+                                <form id="deleteForm" action="{{ route('usuario.destroy', ['usuario' => $usuario->id]) }}" method="POST">
+                                    @csrf
+                                    <input type="hidden" class="" name="_method" value="DELETE">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <button type="button" id="deletarBtn" class="btn btn-primary">Deletar</button>
+                                        </div>
                                     </div>
                                 </form>
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
-        </section>
-    @endforeach
-    </body>
+        </div>
+    </div>
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteModalLabel">Confirmação de exclusão</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Você tem certeza que deseja excluir o usuário?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" id="confirmDeleteBtn" class="btn btn-danger">Excluir</button>
+                </div>
+            </div>
+        </div>
+    </div>
+@endforeach
+</body>
+<!-- Modal -->
+
+
+<script>
+    document.getElementById('deletarBtn').addEventListener('click', function() {
+        $('#deleteModal').modal('show');
+    });
+
+    document.getElementById('confirmDeleteBtn').addEventListener('click', function() {
+        var form = document.getElementById('deleteForm');
+
+        fetch(form.action, {
+            method: 'POST',
+            body: new FormData(form),
+            headers: {
+                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+            }
+        })
+        .then(response => {
+            // Ação a ser executada quando a requisição for bem-sucedida
+            $('#deleteModal').modal('hide');
+            // Exibir uma nova modal de sucesso aqui, se desejar
+            console.log('Usuário deletado com sucesso');
+        })
+        .catch(error => {
+            // Ação a ser executada quando ocorrer um erro na requisição
+            console.error('Erro ao enviar a requisição:', error);
+        });
+    });
+</script>
 </html>

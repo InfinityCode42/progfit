@@ -40,13 +40,11 @@ class UsuarioController extends Controller
                 'senha' => password_hash($request->input('senha'), PASSWORD_DEFAULT),
                 'idade' => $request->input('idade'),
                 'sexo' => $request->input('sexo'),
-                'tipo_usuario' => 'cliente',
-                'endereco' => $request->input('endereco'),
-                'bairro' => $request->input('bairro'),
-                'numero' => $request->input('numero'),
+                'tipo_usuario' => $request->input('tipo_usuario'),
+
             ]
         );
-        if($adicionar){
+        if ($adicionar) {
             return redirect()->back()->with('Sucesso', 'Usuario cadastrado com sucesso');
         }
         return redirect()->back()->with('Erro', 'Erro ao cadastrar um usuario');
@@ -56,35 +54,40 @@ class UsuarioController extends Controller
     {
         $usuarios = $this->usuario->find($usuario);
 
-        return view ("usuario/ver", ['usuarios' => $usuarios]);
+        return view("usuario/ver", ['usuarios' => $usuarios]);
     }
 
     public function edit(Usuario $usuario)
     {
         $usuarios = $this->usuario->find($usuario);
 
-        return view ("usuario/editar", ['usuarios' => $usuarios]);
+        return view("usuario/editar", ['usuarios' => $usuarios]);
     }
 
     public function update(Request $request, string $id)
     {
-        $update = $this->usuario->where('id', $id)->update($request->except("_token", "_method"));
+        $dadosAtualizados = $request->except("_token", "_method");
 
-        if($update){
-            return redirect()->back()->with('Sucesso', 'Dados alterados com sucesso!!!');
+        if (!empty($request->senha)) {
+            $dadosAtualizados['senha'] = password_hash($request->senha, PASSWORD_DEFAULT);
         }
 
-        return redirect()->back()->with('Erro', 'erro ao realizar a alteração das informações!!!');
+        $update = $this->usuario->where('id', $id)->update($dadosAtualizados);
+
+        if ($update) {
+            return redirect()->back()->with('Sucesso', 'Dados alterados com sucesso!');
+        } else {
+            return redirect()->back()->with('Erro', 'Erro ao realizar a alteração das informações!');
+        }
     }
+
 
     public function destroy(Usuario $usuario)
     {
         $deletar = $this->usuario->where('id', $usuario->id)->delete();
-        if($deletar){
+        if ($deletar) {
             return redirect()->route("usuario.index");
         }
         return redirect()->back()->with('Erro', 'erro ao deletar o usuário');
-
-
     }
 }
