@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-@include('includes.header')
+    @include('includes.header')
 
 <body>
 
@@ -17,16 +17,24 @@
                 </div>
                 <div class="dados">
                     <h1>Cadastrar Usuario</h1>
+
+                    @if (session('Sucesso'))
+                        <div class="alert alert-success mt-3 ">
+                            {{ session('Sucesso') }}
+                        </div>
+                    @endif
+                    @if (session('Erro'))
+                        <div class="alert alert-danger mt-3 ">
+                            {{ session('Erro') }}
+                        </div>
+                    @endif
+
                     <div class="row">
                         <div class="col-10">
                             <div class="card p-3">
                                 <form action="{{ route('usuario.store') }}" method="POST" id="cadastroForm">
                                     @csrf
-                                    @if (!session()->has('Sucesso'))
-                                        {{ session()->get('Erro') }}
-                                    @else
-                                        {{ session()->get('Sucesso') }}
-                                    @endif
+
                                     <style>
                                         .form-control,
                                         .custom-select {
