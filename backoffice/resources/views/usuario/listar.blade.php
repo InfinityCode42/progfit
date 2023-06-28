@@ -16,57 +16,88 @@
                     </div>
                 </div>
                 <h1>Usuarios</h1>
-                <div class="dados d-flex">
+                <div class="dados d-flex col-12">
                     <style>
-                        .user-card {
-                            display: flex;
-                            align-items: center;
-                            padding: 10px;
-                            border: 1px solid #ddd;
-                            border-radius: 5px;
-                            transition: background-color 0.3s ease;
-                            background: #FFFFFF;
-                            box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+                        table {
+                            border-collapse: collapse;
                         }
 
-                        .user-card:hover {
-                            background-color: #0000;
-                            color: #FFFF;
+                        th, td {
+                            padding: 8px;
+                            text-align: left;
+                            border-bottom: 1px solid #ddd;
                         }
 
-                        .user-avatar {
-                            width: 50px;
-                            height: 50px;
-                            overflow: hidden;
-                            border-radius: 50%;
-                            margin-right: 10px;
+                        th {
+                            background-color: #f2f2f2;
                         }
 
-                        .user-avatar img {
-                            width: 100%;
-                            height: 100%;
-                            object-fit: cover;
-                        }
-
-                        .user-details h3 {
-                            margin: 0;
-                            font-size: 16px;
-                            font-weight: bold;
-                        }
-
-                        .user-details p {
-                            margin: 5px 0;
+                        .btn {
+                            display: inline-block;
+                            padding: 6px 12px;
+                            margin-bottom: 0;
                             font-size: 14px;
-                            color: #888;
+                            font-weight: 400;
+                            line-height: 1.42857143;
+                            text-align: center;
+                            white-space: nowrap;
+                            vertical-align: middle;
+                            cursor: pointer;
+                            border: 1px solid transparent;
+                            border-radius: 4px;
                         }
 
-                        .user-details span {
-                            font-size: 12px;
-                            color: #999;
+                        .btn-ver {
+                            background-color: #5cb85c;
+                            border-color: #4cae4c;
+                            color: #fff;
+                        }
+
+                        .btn-remover {
+                            background-color: #d9534f;
+                            border-color: #d43f3a;
+                            color: #fff;
                         }
                     </style>
+
                     <div class="row">
-                        @foreach ($usuarios as $usuario)
+
+                        <div class="col-12">
+                            <div class="tabela">
+                                <table class="bg-white">
+                                    <thead>
+                                        <tr>
+                                            <th>#ID</th>
+                                            <th>Foto</th>
+                                            <th>Nome</th>
+                                            <th>Sobrenome</th>
+                                            <th>Tipo do Usuario</th>
+                                            <th>Status</th>
+                                            <th>Ação</th>
+                                        </tr>
+                                    </thead>
+                                    @foreach ($usuarios as $usuario)
+                                    <tbody>
+
+                                            <tr>
+                                                <td>{{$usuario->id}}</td>
+                                                <td><img style="width: 40px;border-radius: 32px;" src="{{$usuario->foto}}" alt=""></td>
+                                                <td>{{$usuario->nome}}</td>
+                                                <td>{{$usuario->sobrenome}}</td>
+                                                <td>{{$usuario->tipo_usuario}}</td>
+                                                <td>{{$usuario->status}}</td>
+                                                <td>
+                                                    <a href="{{ route('usuario.edit', $usuario->id) }}" class="text-center" style="text-decoration: none; color: white; background: black; padding: 5px; border-radius: 16px; width: 60px;">
+                                                        Ver
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    @endforeach
+                                </table>
+                            </div>
+                        </div>
+                        {{-- @foreach ($usuarios as $usuario)
                         <div class="col-6 col-lg-6 mt-2">
                             <div class="user-card">
                                 <div class="user-avatar">
@@ -83,7 +114,7 @@
                                 </a>
                             </div>
                         </div>
-                    @endforeach
+                    @endforeach --}}
                     </div>
 
 

@@ -22,14 +22,13 @@ class RestritoController extends Controller
 
     public function store(Requisicao $requisicao)
     {
-
         $requisicao->validate([
             'email' => 'required|email',
             'senha' => 'required'
         ], [
-            'email.required' => 'O e-mail é obrigatorio!!!',
-            'email.email' => 'Esse campo precisa conter um email valido!!!',
-            'senha.required' => 'A senha é obrigatoria!!!',
+            'email.required' => 'O e-mail é obrigatório!!!',
+            'email.email' => 'Esse campo precisa conter um email válido!!!',
+            'senha.required' => 'A senha é obrigatória!!!',
             'senha.senha' => 'Senha incorreta!!!',
         ]);
 
@@ -43,11 +42,16 @@ class RestritoController extends Controller
             return redirect()->route('login.index')->withErrors(['error' => 'E-mail ou senha incorreto!!!']);
         }
 
-        Auth::guard('web')->login($usuario);
-;
-
-        return redirect()->route('dashboard.index');
+        if ($usuario->status == 'Ativo') {
+            Auth::guard('web')->login($usuario);
+            return redirect()->route('dashboard.index');
+        } else {
+            return redirect()->route('login.index')->withErrors(['error' => 'Usuário inativo.']);
+        }
     }
+
+
+
     public function destroy()
     {
         Auth::logout();
