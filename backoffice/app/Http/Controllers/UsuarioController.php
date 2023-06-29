@@ -40,6 +40,7 @@ class UsuarioController extends Controller
                 'senha' => password_hash($request->input('senha'), PASSWORD_DEFAULT),
                 'idade' => $request->input('idade'),
                 'sexo' => $request->input('sexo'),
+                'status' => $request->input('status'),
                 'tipo_usuario' => $request->input('tipo_usuario'),
 
             ]
@@ -50,12 +51,6 @@ class UsuarioController extends Controller
         return redirect()->back()->with('Erro', 'Erro ao cadastrar um usuario');
     }
 
-    public function show(Usuario $usuario)
-    {
-        $usuarios = $this->usuario->find($usuario);
-
-        return view("usuario/ver", ['usuarios' => $usuarios]);
-    }
 
     public function edit(Usuario $usuario)
     {

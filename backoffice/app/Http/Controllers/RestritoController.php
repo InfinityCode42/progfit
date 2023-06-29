@@ -42,7 +42,8 @@ class RestritoController extends Controller
             return redirect()->route('login.index')->withErrors(['error' => 'E-mail ou senha incorreto!!!']);
         }
 
-        if ($usuario->status == 'Ativo') {
+
+        if ($usuario->status == 'ativo') {
             Auth::guard('web')->login($usuario);
             return redirect()->route('dashboard.index');
         } else {

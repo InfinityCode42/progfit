@@ -20,7 +20,7 @@ class Usuario extends Authenticatable
 
     protected $table = 'usuarios';
     protected $primaryKey = 'id';
-    protected $fillable = ['nome','sobrenome','email','cpf', 'uf', 'celular', 'senha', 'idade', 'sexo', 'tipo_usuario'];
+    protected $fillable = ['nome','sobrenome','email','cpf', 'uf', 'celular', 'senha', 'idade', 'sexo', 'tipo_usuario', 'status'];
     public $timestamps = false;
 
 

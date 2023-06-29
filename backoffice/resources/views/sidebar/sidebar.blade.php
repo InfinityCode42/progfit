@@ -1,33 +1,35 @@
-
 <!-- Sidebar -->
 <div class="sidebar" id="sidebar">
     <div class="sidebar-inner slimscroll">
         <div id="sidebar-menu" class="sidebar-menu">
             <ul>
-                <li class="menu-title">
-                    <span>Main</span>
-                </li>
-                <li class="submenu">
-                    <a href="#"><i class="la la-dashboard"></i> <span> Dashboard</span> <span class="menu-arrow"></span></a>
-                    <ul style="display: none;">
-                        <li><a class="{{ set_active(['/','dashboard/page']) }}" href="{{ route('dashboard/page') }}">Admin Dashboard</a></li>
-                    </ul>
-                </li>
+                @foreach ($admModulos as $nomePrimario => $itens)
+                    <li class="submenu">
+                        <a href="#" style="text-decoration: none;">
+                            <i class="{{ $itens[0]->icone }}"></i>
+                            <span> {{ $nomePrimario }}</span>
+                            <span class="menu-arrow"></span>
+                        </a>
+                        <ul style="display: none;">
+                            @foreach ($itens as $item)
+                                <li><a href="{{ route($item->rota_modulo) }}" style="text-decoration: none;">{{ $item->nome_secundario }}</a></li>
+                            @endforeach
+                        </ul>
+                    </li>
+                @endforeach
+            </ul>
+            <ul>
 
                 <li class="submenu">
-                    <a href="#"><i class="la la-object-group"></i> <span> Forms </span> <span class="menu-arrow"></span></a>
+                    <a href="#">
+                        <i class="fa fa-sign-out"></i>
+                        <span>Logout</span>
+                        <span class="menu-arrow"></span>
+                    </a>
                     <ul style="display: none;">
-                        <li><a class="{{ set_active(['form/input/page']) }}" href="{{ route('form/input/page') }}">Form Input</a></li>
-                        <li><a class="{{ set_active(['form/radio/index']) }}" href="{{ route('form/radio/index') }}">Form Radio</a></li>
-                        <li><a class="{{ set_active(['form/checkbox/index']) }}" href="{{ route('form/checkbox/index') }}">Form Checkbox</a></li>
-                        <li><a class="{{ set_active(['form/update/page']) }}" href="{{ route('form/update/page') }}">Form Upload File</a></li>
-                    </ul>
-                </li>
-                <li class="submenu">
-                    <a href="#"><i class="la la-pie-chart"></i> <span> Page View </span> <span class="menu-arrow"></span></a>
-                    <ul style="display: none;">
-                        <li><a class="{{ set_active(['form/page/view']) }} {{ request()->is('form/input/edit/*') ? 'active' : '' }}" href="{{ route('form/page/view') }}">Report Form Input</a></li>
-                        <li><a class="{{ set_active(['view/upload/file']) }} {{ request()->is('download/file/*') ? 'active' : '' }}" href="{{ route('view/upload/file') }}">Report Form Upload File</a></li>
+                        <li><a href="{{ route('login.destroy') }}" class="link flex">
+                                Sair
+                            </a></li>
                     </ul>
                 </li>
             </ul>

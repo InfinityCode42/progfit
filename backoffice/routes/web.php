@@ -6,7 +6,7 @@ use App\Http\Controllers\SiteController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\RestritoController;
-
+use App\Http\Controllers\VideoAulasController;
 
 Route::get("/", [SiteController::class, 'site']) -> name('site');
 
@@ -25,6 +25,9 @@ Route::middleware('auth')->group(function () {
 });
 Route::middleware('auth')->group(function () {
     Route::resource('usuario', UsuarioController::class);
+});
+Route::middleware('auth')->group(function () {
+    Route::resource('video_aulas', VideoAulasController::class);
 });
 
 

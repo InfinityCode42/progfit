@@ -1,20 +1,12 @@
-<!DOCTYPE html>
-@include('includes.header')
-<html>
-@foreach ($usuarios as $usuario)
-    <div class="container-fluid mb-5">
-        <div class="row">
-            <div class="col-lg-3 mb-5">
-                @include('includes.navbar_dashboard')
-            </div>
-            <div class="col-lg-9">
-                <div class="row mb-5">
-                    <div class="col-12">
-                        @include('includes.sidebar')
-                    </div>
-                </div>
-                <div class="dados">
-                    <h1>Editar</h1>
+@extends('layouts.master')
+@section('content')
+    <div class="page-wrapper">
+        <div class="content container-fluid">
+            <h1>Editar usuário</h1>
+            <div class="row">
+                <div class="col col-md-12 col-sm-12 col-lg-12 col-xl-12">
+
+
                     @if (session('Sucesso'))
                         <div class="alert alert-success mt-3 ">
                             {{ session('Sucesso') }}
@@ -26,18 +18,11 @@
                         </div>
                     @endif
 
-                    <style>
-                        .form-control,
-                        .custom-select {
-                            border-radius: 8px;
-                        }
-                    </style>
 
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="card p-3">
-                                <form action="{{ route('usuario.update', ['usuario' => $usuario->id]) }}"
-                                    method="POST">
+                    <div class="card shadow">
+                        @foreach ($usuarios as $usuario)
+                            <div class="card-body">
+                                <form action="{{ route('usuario.update', ['usuario' => $usuario->id]) }}" method="POST">
                                     @csrf
                                     <input type="hidden" class="" name="_method" value="PUT">
 
@@ -69,14 +54,12 @@
                                         <div class="col-md-4 mb-3">
                                             <label for="exampleInputEmail1" class="form-label">CPF</label>
                                             <input type="tel" value="{{ $usuario->cpf }}" name="cpf"
-                                                class="form-control" id="exampleInputEmail1"
-                                                aria-describedby="emailHelp">
+                                                class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                                         </div>
                                         <div class="col-md-4 mb-3">
                                             <label for="exampleInputEmail1" class="form-label">UF</label>
                                             <input type="text" value="{{ $usuario->uf }}" name="uf"
-                                                class="form-control" id="exampleInputEmail1"
-                                                aria-describedby="emailHelp">
+                                                class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                                         </div>
                                     </div>
 
@@ -107,6 +90,13 @@
                                                 <option value="O">Outro</option>
                                             </select>
                                         </div>
+                                        <div class="col-md-4 mb-3">
+                                            <label>Status</label>
+                                            <select value="{{ $usuario->status }}" class="custom-select" name="status">
+                                                <option selected value="ativo">Ativo</option>
+                                                <option value="inativo">Inativo</option>
+                                            </select>
+                                        </div>
                                     </div>
 
                                     <div class="row">
@@ -117,24 +107,26 @@
                                     </div>
                                 </form>
 
-                                <form id="deleteForm" action="{{ route('usuario.destroy', ['usuario' => $usuario->id]) }}" method="POST">
+                                <form id="deleteForm"
+                                    action="{{ route('usuario.destroy', ['usuario' => $usuario->id]) }}" method="POST">
                                     @csrf
                                     <input type="hidden" class="" name="_method" value="DELETE">
                                     <div class="row">
                                         <div class="col-12">
-                                            <button type="button" id="deletarBtn" class="btn btn-primary">Deletar</button>
+                                            <button type="button" id="deletarBtn"
+                                                class="btn btn-primary">Deletar</button>
                                         </div>
                                     </div>
                                 </form>
                             </div>
-                        </div>
+                        @endforeach
                     </div>
-
                 </div>
             </div>
         </div>
     </div>
-    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -153,36 +145,31 @@
             </div>
         </div>
     </div>
-@endforeach
-</body>
-<!-- Modal -->
-
-
-<script>
-    document.getElementById('deletarBtn').addEventListener('click', function() {
-        $('#deleteModal').modal('show');
-    });
-
-    document.getElementById('confirmDeleteBtn').addEventListener('click', function() {
-        var form = document.getElementById('deleteForm');
-
-        fetch(form.action, {
-            method: 'POST',
-            body: new FormData(form),
-            headers: {
-                'X-CSRF-TOKEN': '{{ csrf_token() }}'
-            }
-        })
-        .then(response => {
-            // Ação a ser executada quando a requisição for bem-sucedida
-            $('#deleteModal').modal('hide');
-            // Exibir uma nova modal de sucesso aqui, se desejar
-            console.log('Usuário deletado com sucesso');
-        })
-        .catch(error => {
-            // Ação a ser executada quando ocorrer um erro na requisição
-            console.error('Erro ao enviar a requisição:', error);
+    <script>
+        document.getElementById('deletarBtn').addEventListener('click', function() {
+            $('#deleteModal').modal('show');
         });
-    });
-</script>
-</html>
+
+        document.getElementById('confirmDeleteBtn').addEventListener('click', function() {
+            var form = document.getElementById('deleteForm');
+
+            fetch(form.action, {
+                    method: 'POST',
+                    body: new FormData(form),
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    }
+                })
+                .then(response => {
+                    // Ação a ser executada quando a requisição for bem-sucedida
+                    $('#deleteModal').modal('hide');
+                    // Exibir uma nova modal de sucesso aqui, se desejar
+                    console.log('Usuário deletado com sucesso');
+                })
+                .catch(error => {
+                    // Ação a ser executada quando ocorrer um erro na requisição
+                    console.error('Erro ao enviar a requisição:', error);
+                });
+        });
+    </script>
+@endsection

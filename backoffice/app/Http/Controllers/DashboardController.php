@@ -21,10 +21,10 @@ class DashboardController extends Controller
     public function index()
     {
 
-        $usuario = Usuario::count();
+        $usuario = Usuario::where('tipo_usuario', 'cliente')->count();
 
 
-        return view("dashboard/index", ['qtd_usuarios' => $usuario]);
+        return view("dashboard/index", ['qtd_clientes' => $usuario]);
     }
 
     public function create()

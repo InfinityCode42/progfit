@@ -19,11 +19,18 @@ class AppServiceProvider extends ServiceProvider
      * Bootstrap any application services.
      */
     public function boot()
-    {
+{
+    view()->composer('sidebar.sidebar', function ($view) {
+        $admModulos = AdmModulos::all();
 
-        view()->composer('includes.sidebar', function ($view) {
-            $admModulos = AdmModulos::all();
-            $view->with('admModulos', $admModulos);
-        });
-    }
+        // Ordenar os dados pelo campo 'nome_primario'
+        $admModulos = $admModulos->sortBy('nome_primario');
+
+        // Agrupar os itens pelo campo 'nome_primario'
+        $itensAgrupados = $admModulos->groupBy('nome_primario');
+
+        $view->with('admModulos', $itensAgrupados);
+    });
+}
+
 }

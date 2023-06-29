@@ -7,7 +7,7 @@
             <div class="page-header">
                 <div class="row">
                     <div class="col-sm-12">
-                        <h3 class="page-title">Welcome Admin!</h3>
+                        <h3 class="page-title">Bem-vindo ao Admin da PROG.FIT!</h3>
                         <ul class="breadcrumb">
                             <li class="breadcrumb-item active">Dashboard</li>
                         </ul>
@@ -22,22 +22,25 @@
                             <span class="dash-widget-icon"><i class="fa fa-cubes"></i></span>
                             <div class="dash-widget-info">
                                 <h3>112</h3>
-                                <span>Projects</span>
+                                <span>Projetos</span>
                             </div>
                         </div>
                     </div>
                 </div>
+
                 <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
                     <div class="card dash-widget">
                         <div class="card-body">
                             <span class="dash-widget-icon"><i class="fa fa-usd"></i></span>
                             <div class="dash-widget-info">
-                                <h3>44</h3>
-                                <span>Clients</span>
+                                <h3>R$56.657,54</h3>
+                                <span>Faturamento</span>
                             </div>
                         </div>
                     </div>
                 </div>
+
+
                 <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
                     <div class="card dash-widget">
                         <div class="card-body">
@@ -54,15 +57,15 @@
                         <div class="card-body">
                             <span class="dash-widget-icon"><i class="fa fa-user"></i></span>
                             <div class="dash-widget-info">
-                                <h3>218</h3>
-                                <span>Employees</span>
+                                <h3>{{$qtd_clientes}}</h3>
+                                <span>Clientes</span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="row">
+            {{-- <div class="row">
                 <div class="col-md-12">
                     <div class="card-group m-b-30">
                         <div class="card">
@@ -136,9 +139,9 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
 
-            <div class="row">
+            {{-- <div class="row">
                 <div class="col-md-12 col-lg-12 col-xl-4 d-flex">
                     <div class="card flex-fill dash-statistics">
                         <div class="card-body">
@@ -261,7 +264,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
 @endsection
