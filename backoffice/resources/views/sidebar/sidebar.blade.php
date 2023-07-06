@@ -3,6 +3,7 @@
     <div class="sidebar-inner slimscroll">
         <div id="sidebar-menu" class="sidebar-menu">
             <ul>
+
                 @foreach ($admModulos as $nomePrimario => $itens)
                     <li class="submenu">
                         <a href="#" style="text-decoration: none;">
@@ -18,8 +19,8 @@
                     </li>
                 @endforeach
             </ul>
-            <ul>
 
+            <ul>
                 <li class="submenu">
                     <a href="#">
                         <i class="fa fa-sign-out"></i>
@@ -33,6 +34,7 @@
                     </ul>
                 </li>
             </ul>
+
         </div>
     </div>
 </div>

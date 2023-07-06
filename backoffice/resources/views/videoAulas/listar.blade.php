@@ -2,15 +2,14 @@
 @section('content')
     <div class="page-wrapper">
         <div class="content container-fluid">
-            <h1>Video Aulas</h1>
+            <h2>Video Aulas</h2>
             <div class="row">
                 <div class="col col-md-12 col-sm-12 col-lg-12 col-xl-12">
                     <div class="card shadow">
                         <div class="card-body">
                             <div class="tabela d-flex align-items-center justify-content-center">
                                 <div class="table-responsive">
-                                    <!-- Adicionado wrapper para tornar a tabela responsiva -->
-                                    <table class="table bg-white">
+                                    <table class="table text-center bg-white">
                                         <thead>
                                             <tr>
                                                 <th>#ID</th>
@@ -30,9 +29,9 @@
                                                     <td>{{ $videoaula->data_envio }}</td>
                                                     <td>{{ $videoaula->status }}</td>
                                                     <td>
-                                                        <a href="{{ route('video_aulas.edit', $videoaula->id) }}"
-                                                            class="text-center"
-                                                            style="text-decoration: none; color: white; background: black; padding: 10px; border-radius: 8px; width: 60px;">
+                                                        <a href="{{ route('videoAulas.edit', $videoaula->id) }}"
+                                                            class="text-center btn-primary"
+                                                            style="text-decoration: none; color: white; padding: 10px; border-radius: 8px; width: 60px;">
                                                             Ver
                                                         </a>
                                                     </td>

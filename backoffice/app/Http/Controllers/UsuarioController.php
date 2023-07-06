@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
 use App\Models\Usuario;
 
@@ -28,9 +30,18 @@ class UsuarioController extends Controller
 
     public function store(Request $request)
     {
+        $imageName = null;
+
+        if ($request->hasFile('foto_perfil') && $request->file('foto_perfil')->isValid()) {
+            $requestImage = $request->file('foto_perfil');
+            $extension = $requestImage->getClientOriginalExtension();
+            $imageName = md5($requestImage->getClientOriginalName() . strtotime('now')) . '.' . strtolower($extension);
+            $requestImage->move(public_path('img/fotos_usuarios'), $imageName);
+        }
+        // $this->pre($imageName);
         $adicionar = $this->usuario->create(
             [
-
+                'foto' => '/img/fotos_usuarios/' . $imageName,
                 'nome' => $request->input('nome'),
                 'sobrenome' => $request->input('sobrenome'),
                 'email' => $request->input('email'),
@@ -52,29 +63,65 @@ class UsuarioController extends Controller
     }
 
 
-    public function edit(Usuario $usuario)
+    public function edit($usuario_id)
     {
-        $usuarios = $this->usuario->find($usuario);
+        $usuario = $this->usuario->find($usuario_id);
 
-        return view("usuario/editar", ['usuarios' => $usuarios]);
+        return view("usuario/editar", ['usuario' => $usuario]);
     }
 
     public function update(Request $request, string $id)
     {
-        $dadosAtualizados = $request->except("_token", "_method");
+        $usuario = $this->usuario->find($id);
 
-        if (!empty($request->senha)) {
-            $dadosAtualizados['senha'] = password_hash($request->senha, PASSWORD_DEFAULT);
+        if ($request->hasFile('foto_perfil') && $request->file('foto_perfil')->isValid()) {
+
+            if ($usuario->foto) {
+                $fotoAnterior = public_path($usuario->foto);
+                if (File::exists($fotoAnterior)) {
+                    File::delete($fotoAnterior);
+                }
+            }
+
+            $requestImage = $request->file('foto_perfil');
+            $extension = $requestImage->getClientOriginalExtension();
+            $imageName = md5($requestImage->getClientOriginalName() . strtotime('now')) . '.' . strtolower($extension);
+            $requestImage->move(public_path('img/fotos_usuarios'), $imageName);
+            $usuario->foto = '/img/fotos_usuarios/' . $imageName;
         }
 
-        $update = $this->usuario->where('id', $id)->update($dadosAtualizados);
+        if (!empty($request->input('senha'))) {
+            $usuario->senha = password_hash($request->input('senha'), PASSWORD_DEFAULT);
+        }
+
+
+        $usuario->nome              = $request->input('nome') == '' ? $usuario->nome : $request->input('nome');
+        $usuario->sobrenome         = $request->input('sobrenome') == '' ? $usuario->sobrenome : $request->input('sobrenome');
+        $usuario->email             = $request->input('email') == '' ? $usuario->email : $request->input('email');
+        $usuario->cpf               = $request->input('cpf') == '' ? $usuario->cpf : $request->input('cpf');
+        $usuario->uf                = $request->input('uf') == '' ? $usuario->uf : $request->input('uf');
+        $usuario->celular           = $request->input('celular') == '' ? $usuario->celular : $request->input('celular');
+        $usuario->idade             = $request->input('idade') == '' ? $usuario->idade : $request->input('idade');
+        $usuario->sexo              = $request->input('sexo') == '' ? $usuario->sexo : $request->input('sexo');
+        $usuario->status            = $request->input('status') == '' ? $usuario->status : $request->input('status');
+        $usuario->tipo_usuario      = $request->input('tipo_usuario') == '' ? $usuario->tipo_usuario : $request->input('tipo_usuario');
+
+        $update = $usuario->save();
 
         if ($update) {
-            return redirect()->back()->with('Sucesso', 'Dados alterados com sucesso!');
+            $retorno = redirect()->back()->with('Sucesso', 'Dados alterados com sucesso!');
         } else {
-            return redirect()->back()->with('Erro', 'Erro ao realizar a alteração das informações!');
+            $retorno = redirect()->back()->with('Erro', 'Erro ao realizar a alteração das informações!');
         }
+
+        $retorno = $this->edit($usuario->id);
+
+        return $retorno;
     }
+
+
+
+
 
 
     public function destroy(Usuario $usuario)
@@ -84,5 +131,16 @@ class UsuarioController extends Controller
             return redirect()->route("usuario.index");
         }
         return redirect()->back()->with('Erro', 'erro ao deletar o usuário');
+    }
+
+    public function pre($dado)
+    {
+        echo '<pre>';
+
+        echo var_dump($dado, true);
+
+
+        echo '</pre>';
+        die();
     }
 }

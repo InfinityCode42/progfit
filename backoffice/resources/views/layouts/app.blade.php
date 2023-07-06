@@ -8,6 +8,8 @@
     <meta name="keywords" content="admin, estimates, bootstrap, business, corporate, creative, management, minimal, modern, accounts, invoice, html5, responsive, CRM, Projects">
     <meta name="author" content="Dreamguys - Bootstrap Admin Template">
     <meta name="robots" content="noindex, nofollow">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <title>Error</title>
     <link rel="shortcut icon" type="image/x-icon" href="{{ URL::to('assets/img/favicon.png') }}">
     <link rel="stylesheet" href="{{ URL::to('assets/css/bootstrap.min.css') }}">
@@ -21,7 +23,7 @@
     <div class="main-wrapper">
         @yield('content')
     </div>
-    
+
     <script src="{{ URL::to('assets/js/jquery-3.6.0.min.js') }}"></script>
     <script src="{{ URL::to('assets/js/popper.min.js') }}"></script>
     <script src="{{ URL::to('assets/js/bootstrap.min.js') }}"></script>

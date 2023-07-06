@@ -2,7 +2,11 @@
 @section('content')
     <div class="page-wrapper">
         <div class="content container-fluid">
-            <h1>Cadastrar usuário</h1>
+            <div class="d-flex align-items-center justify-content-between mb-4">
+                <h2 class="">Cadastrar usuário</h2>
+                <a href="/usuario" class="d-sm-inline-block btn shadow btn-primary" style=" border-radius: 16px;"><i
+                        class="fa fa-chevron-left" aria-hidden="true"></i> Voltar</a>
+            </div>
             <div class="row">
                 <div class="col col-md-12 col-sm-12 col-lg-12 col-xl-12">
 
@@ -19,7 +23,8 @@
 
                     <div class="card shadow">
                         <div class="card-body">
-                            <form action="{{ route('usuario.store') }}" method="POST" id="cadastroForm">
+                            <form action="{{ route('usuario.store') }}" method="POST" id="cadastroForm"
+                                enctype="multipart/form-data">
                                 @csrf
 
                                 <style>
@@ -28,6 +33,28 @@
                                         border-radius: 8px;
                                     }
                                 </style>
+
+
+                                <div class="mb-3 form-group">
+                                    <label for="">Foto de perfil</label>
+                                    <div>
+                                        <img width="200" src="/img/user.jpg" id="imgimagem"
+                                            style="cursor: pointer; border-radius: 16px" /><br><br>
+                                        <input hidden type="file" name="foto_perfil" id="foto" class="form-control hidden" >
+                                    </div>
+                                    <script>
+                                        $('#imgimagem').click(function() {
+                                            $('#foto').trigger('click');
+                                        });
+
+                                        $('#foto').change(function() {
+                                            var fileUpload = this.files[0];
+                                            var img = new Image();
+                                            var objectURL = URL.createObjectURL(fileUpload);
+                                            $('#imgimagem').attr('src', objectURL);
+                                        });
+                                    </script>
+                                </div>
 
                                 <div class="mb-3 form-group">
                                     <label for="exampleInputEmail1" class="form-label">Nome*</label>
@@ -68,8 +95,8 @@
                                 <div class="row">
                                     <div class="col-md-4 mb-3">
                                         <label for="exampleInputPassword1" class="form-label">Celular*</label>
-                                        <input type="tel" name="celular" class="form-control"
-                                            id="exampleInputPassword1" placeholder="Digite o celular do usuário...">
+                                        <input type="tel" name="celular" class="form-control" id="exampleInputPassword1"
+                                            placeholder="Digite o celular do usuário...">
                                     </div>
                                     <div class="col-md-4 mb-3">
                                         <label for="exampleInputPassword1" class="form-label">Senha*</label>
@@ -86,7 +113,8 @@
                                 <div class="row">
                                     <div class="col-md-4 mb-3">
                                         <label>Sexo</label>
-                                        <select class="custom-select" name="sexo" placeholder="Escolha o sexo do usuário...">
+                                        <select class="custom-select" name="sexo"
+                                            placeholder="Escolha o sexo do usuário...">
                                             <option value="M">Masculino</option>
                                             <option value="F">Feminino</option>
                                             <option value="O">Outro</option>
@@ -116,7 +144,8 @@
         </div>
     </div>
 
-    <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel" aria-hidden="true">
+    <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -137,8 +166,8 @@
     </div>
 
     <script>
-        $(document).ready(function () {
-            $('#confirmCadastrar').on('click', function () {
+        $(document).ready(function() {
+            $('#confirmCadastrar').on('click', function() {
                 $('#cadastroForm').submit();
             });
         });
