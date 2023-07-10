@@ -11,9 +11,11 @@
                             <form action="{{ route('videoAulas.update', ['videoAula' => $videoAula->id]) }}" method="POST">
                                 @csrf
                                 <input type="hidden" class="" name="_method" value="PUT">
-
+                                <div>
+                                    <iframe width="250" height="180" src="{{$videoAula->link_video}}" title="YouTube video player" frameborder="50" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="border-radius: 16px"></iframe>
+                                </div>
                                 <div class="mb-3 form-group">
-                                    <label for="exampleInputEmail1" class="form-label">Nome do video</label>
+                                    <label for="exampleInputEmail1" class="form-label">Nome do video*</label>
                                     <input type="text" value="{{ $videoAula->nome_video }}" name="nome_video"
                                         class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                                 </div>
@@ -23,12 +25,12 @@
                                         class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="exampleInputEmail1" class="form-label">Link do video</label>
+                                    <label for="exampleInputEmail1" class="form-label">Link do video*</label>
                                     <input type="text" value="{{ $videoAula->link_video }}" name="link_video"
                                         class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                                 </div>
                                 <div class="mb-3">
-                                    <label>Status do video</label>
+                                    <label>Status do video*</label>
                                     <select value="{{ $videoAula->status }}" class="custom-select" name="status">
 
                                         <option>{{ $videoAula->status }}</option>
@@ -38,7 +40,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="exampleInputEmail1" class="form-label">Data de envio</label>
-                                    <input type="tel" value="{{ $videoAula->data_envio }}" name="data_envio"
+                                    <input readonly type="tel" value="{{ $videoAula->data_envio }}" name="data_envio"
                                         class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                                 </div>
                                 <div class="col-md-12 d-flex">
@@ -46,7 +48,7 @@
                                         <div class="col-6">
                                             <button type="submit" id="editar" class="btn btn-sucess"
                                                 style="background: green; color: white;" data-toggle="modal"
-                                                data-target="#confirmModal">Editar</button>
+                                                data-target="#confirmModal">Alterar</button>
                                         </div>
                                     </div>
 
@@ -62,7 +64,7 @@
                                         <div class="col-6">
                                             <button type="submit" id="deletar" class="btn btn-sucess"
                                                 style="background: red; color: white;" data-toggle="modal"
-                                                data-target="#confirmModal">Deletar</button>
+                                                data-target="#confirmModal">Excluir</button>
                                         </div>
                                     </div>
                                 </div>

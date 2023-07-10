@@ -10,17 +10,6 @@
             <div class="row">
                 <div class="col col-md-12 col-sm-12 col-lg-12 col-xl-12">
 
-                    @if (session('Sucesso'))
-                        <div class="alert alert-success mt-3 ">
-                            {{ session('Sucesso') }}
-                        </div>
-                    @endif
-                    @if (session('Erro'))
-                        <div class="alert alert-danger mt-3 ">
-                            {{ session('Erro') }}
-                        </div>
-                    @endif
-
                     <div class="card shadow">
                         <div class="card-body">
                             <form action="{{ route('usuario.store') }}" method="POST" id="cadastroForm"
@@ -40,7 +29,8 @@
                                     <div>
                                         <img width="200" src="/img/user.jpg" id="imgimagem"
                                             style="cursor: pointer; border-radius: 16px" /><br><br>
-                                        <input hidden type="file" name="foto_perfil" id="foto" class="form-control hidden" >
+                                        <input hidden type="file" name="foto_perfil" id="foto"
+                                            class="form-control hidden">
                                     </div>
                                     <script>
                                         $('#imgimagem').click(function() {

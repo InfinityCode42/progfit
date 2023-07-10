@@ -6,7 +6,7 @@
 
     @include('includes.navbar_site')
 
-<div class="container-fluid" style="background: url(img/fundo_site.svg); background-size: cover; padding: 14%;">
+<div class="container-fluid" style="background: url(img/imgs_site/fundo_site.svg); background-size: cover; padding: 14%;">
     <div class="row">
         <div class="col-12 d-lg-flex d-xl-flex justify-content-center align-items-center">
             <div class="background">
@@ -15,7 +15,7 @@
                     <h2 class="text-white">A progressão que você sempre buscou</h2>
                 </div>
                 <div class="d-flex justify-content-center align-items-center">
-                    <img src="img/logo_body-removebg.png" class="img-fluid">
+                    <img src="img/imgs_site/logo_body-removebg.png" class="img-fluid">
                 </div>
             </div>
         </div>
@@ -34,21 +34,21 @@
             </div>
             <div class="card card_inicio_site_dois text-center d-flex align-items-center justify-content-center" style=" border-radius: 10px; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); color: #000000;">
                 <div class="card-body">
-                    <img class="img_card_inicio_site" src="img/pencil.svg">
+                    <img class="img_card_inicio_site" src="img/imgs_site/pencil.svg">
                     <h1 class="mb-5 titulo_card_inicio_site font-weight-bold">Personalização</h1>
                     <h3 class="subtitulo_card_inicio_site">Programas personalizados que se adaptam às suas necessidades</h3>
                 </div>
             </div>
             <div class="card card_inicio_site_tres text-center d-flex align-items-center justify-content-center" style=" border-radius: 10px; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); color: #000000;">
                 <div class="card-body">
-                    <img class="img_card_inicio_site" src="img/group.svg">
+                    <img class="img_card_inicio_site" src="img/imgs_site/group.svg">
                     <h1 class="mb-5 titulo_card_inicio_site font-weight-bold">Acompanhamento</h1>
                     <h3 class="subtitulo_card_inicio_site" >Monitoramos seu progresso e ajustamos seu programa sempre que necessário</h3>
                 </div>
             </div>
             <div class="card card_inicio_site_quatro text-center d-flex align-items-center justify-content-center" style=" border-radius: 10px; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); color: #000000;">
                 <div class="card-body">
-                    <img class="img_card_inicio_site" src="img/clock.svg">
+                    <img class="img_card_inicio_site" src="img/imgs_site/clock.svg">
                     <h1 class="mb-5 titulo_card_inicio_site font-weight-bold">Flexibilidade</h1>
                     <h3 class="subtitulo_card_inicio_site">Treine onde e quando quiser, de acordo com sua disponibilidade</h3>
                 </div>
@@ -84,7 +84,7 @@
                     <div class="col-12 col-md-4" style="justify-content: center;display: flex;">
                         <div class="card background_cards" style="width: 25rem;height: 25rem;">
                             <div class="card-body d-flex justify-content-center align-items-center" style="">
-                                <img src="img/logo_body-removebg_amarelo.png"  alt="..." style="width: 100%;">
+                                <img src="img/imgs_site/logo_body-removebg_amarelo.png"  alt="..." style="width: 100%;">
                             </div>
                         </div>
                     </div>
@@ -96,7 +96,7 @@
 
 
 
-<div class="container-fluid" style="background: url(img/pexels-leon-ardho.png); background-size: cover;">
+<div class="container-fluid" style="background: url(img/imgs_site/pexels-leon-ardho.png); background-size: cover;">
     <div class="row justify-content-center align-items-center" style="background: rgba(0,0,0, 0.7);">
         <div class="col-12 d-lg-flex d-xl-flex col-lg-8 col-xl-8 com-md-12 col-sm-12">
             <div class="conteudos_meio_site row justify-content-center">
@@ -167,20 +167,20 @@
 </div>
 
 <div class="container-fluid mt-5" id="time">
-    <div class="row mt-5" style="background: url(img/pexels-tima-miroshnichenko.svg);background-size: cover;">
+    <div class="row mt-5" style="background: url(img/imgs_site/pexels-tima-miroshnichenko.svg);background-size: cover;">
         <div class="col-12" style="background: rgba(0,0,0, 0.7);">
             <div class="time d-flex flex-column">
                 <h1 class="d-flex flex-sm-column justify-content-center align-content-center text-white mb-5 font-weight-bold titulo-sobre">TIME</h1>
                 <div class="d-lg-flex d-xl-flex align-content-center justify-content-center">
                     <div class="gustavo col-12 col-md-6 col-sm-12 mb-4">
-                        <img src="img/Gustavo.png" alt="" class="img-fluid rounded-circle shadow">
+                        <img src="img/imgs_site/Gustavo.png" alt="" class="img-fluid rounded-circle shadow">
                         <div class="descricao_gustavo mt-3">
                             <h1 class="text-white font-weight-bold">Gustavo Ferrarini</h1>
                             <p class="text-white">Criador da PROG.FIT<br> Possui bacharelado em Educação Física pela UNIBRASIL, <br>tendo experiência em emagrecimento, hipertrofia e personal trainer.</p>
                         </div>
                     </div>
                     <div class="alexandre col-12 col-md-6 col-sm-12">
-                        <img src="img/Alexandre.png" alt="" class="img-fluid rounded-circle shadow" >
+                        <img src="img/imgs_site/Alexandre.png" alt="" class="img-fluid rounded-circle shadow" >
                         <div class="descricao_alexandre mt-3">
                             <h1 class="text-white font-weight-bold">Alexandre Osovski</h1>
                             <p class="text-white">Co-criador da PROG.FIT <br>Possui Desenvolvimento De Sistemas na PUCPR e <br>Engenharia de Software na Universidade Positivo, <br>tendo experiência em programação Web.</p>

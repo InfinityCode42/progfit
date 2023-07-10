@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -6,7 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
     <meta name="description" content="Smarthr - Bootstrap Admin Template">
-    <meta name="keywords" content="admin, estimates, bootstrap, business, corporate, creative, management, minimal, modern, accounts, invoice, html5, responsive, CRM, Projects">
+    <meta name="keywords"
+        content="admin, estimates, bootstrap, business, corporate, creative, management, minimal, modern, accounts, invoice, html5, responsive, CRM, Projects">
     <meta name="author" content="Dreamguys - Bootstrap Admin Template">
     <meta name="robots" content="noindex, nofollow">
     <title>Admin template</title>
@@ -22,9 +22,9 @@
     <link rel="stylesheet" href="{{ URL::to('assets/css/style.css') }}">
 
     {{-- message toastr --}}
-	<link rel="stylesheet" href="{{ URL::to('assets/css/toastr.min.css') }}">
-	<script src="{{ URL::to('assets/js/toastr_jquery.min.js') }}"></script>
-	<script src="{{ URL::to('assets/js/toastr.min.js') }}"></script>
+    <link rel="stylesheet" href="{{ URL::to('assets/css/toastr.min.css') }}">
+    <script src="{{ URL::to('assets/js/toastr_jquery.min.js') }}"></script>
+    <script src="{{ URL::to('assets/js/toastr.min.js') }}"></script>
     @yield('style')
 
 </head>
@@ -32,18 +32,18 @@
 <body style="background: #ECF3F9">
 
     <div class="main-wrapper">
-		<!-- Loader -->
-		<div id="loader-wrapper">
-			<div id="loader">
-				<div class="loader-ellips">
-				  <span class="loader-ellips__dot"></span>
-				  <span class="loader-ellips__dot"></span>
-				  <span class="loader-ellips__dot"></span>
-				  <span class="loader-ellips__dot"></span>
-				</div>
-			</div>
-		</div>
-		<!-- /Loader -->
+        <!-- Loader -->
+        <div id="loader-wrapper">
+            <div id="loader">
+                <div class="loader-ellips">
+                    <span class="loader-ellips__dot"></span>
+                    <span class="loader-ellips__dot"></span>
+                    <span class="loader-ellips__dot"></span>
+                    <span class="loader-ellips__dot"></span>
+                </div>
+            </div>
+        </div>
+        <!-- /Loader -->
         <div class="header">
             {{-- <div class="header-left">
                 <a href="{{ route('/') }}" class="logo">
@@ -304,12 +304,22 @@
         </div>
 
         <!-- Sidebar -->
-		@include('sidebar.sidebar')
-		<!-- /Sidebar -->
+        @include('sidebar.sidebar')
+        <!-- /Sidebar -->
 
-		<!-- Page Wrapper -->
-		@yield('content')
-		<!-- /Page Wrapper -->
+        <!-- Page Wrapper -->
+        @yield('content')
+        @if (session('Sucesso'))
+            <script>
+                toastr.success('{{ session('Sucesso') }}');
+            </script>
+        @endif
+        @if (session('Erro'))
+            <script>
+                toastr.error('{{ session('Erro') }}');
+            </script>
+        @endif
+        <!-- /Page Wrapper -->
     </div>
 
     <script data-cfasync="false" src="../../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
@@ -322,13 +332,23 @@
     <script src="{{ URL::to('assets/js/chart.js') }}"></script>
     <script src="{{ URL::to('assets/js/select2.min.js') }}"></script>
     <script src="{{ URL::to('assets/js/jquery.dataTables.min.js') }}"></script>
-	<script src="{{ URL::to('assets/js/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ URL::to('assets/js/dataTables.bootstrap4.min.js') }}"></script>
     <script src="{{ URL::to('assets/js/moment.min.js') }}"></script>
-	<script src="{{ URL::to('assets/js/bootstrap-datetimepicker.min.js') }}"></script>
+    <script src="{{ URL::to('assets/js/bootstrap-datetimepicker.min.js') }}"></script>
     <script src="{{ URL::to('assets/plugins/fileupload/fileupload.min.js') }}"></script>
     <script src="{{ URL::to('assets/js/app.js') }}"></script>
 
-	@yield('script')
+    <script>
+        window.toastr = require('toastr');
+        toastr.options = {
+            closeButton: true,
+            progressBar: true,
+            positionClass: 'toast-bottom-right',
+            timeOut: 5000
+        };
+    </script>
+
+    @yield('script')
 </body>
 
 </html>

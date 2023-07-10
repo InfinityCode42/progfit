@@ -1,7 +1,6 @@
-
-
 @extends('layouts.master')
 @section('content')
+
     <div class="page-wrapper">
         <div class="content container-fluid">
             <div class="page-header">
@@ -57,7 +56,7 @@
                         <div class="card-body">
                             <span class="dash-widget-icon"><i class="fa fa-user"></i></span>
                             <div class="dash-widget-info">
-                                <h3>{{$qtd_clientes}}</h3>
+                                <h3>{{ $qtd_clientes }}</h3>
                                 <span>Clientes</span>
                             </div>
                         </div>
@@ -267,4 +266,13 @@
             </div> --}}
         </div>
     </div>
+    <script>
+        window.toastr = require('toastr');
+        toastr.options = {
+            closeButton: true,
+            progressBar: true,
+            positionClass: 'toast-bottom-right',
+            timeOut: 5000
+        };
+    </script>
 @endsection

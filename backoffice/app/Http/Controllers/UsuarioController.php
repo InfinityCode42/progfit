@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
 use App\Models\Usuario;
@@ -38,7 +37,7 @@ class UsuarioController extends Controller
             $imageName = md5($requestImage->getClientOriginalName() . strtotime('now')) . '.' . strtolower($extension);
             $requestImage->move(public_path('img/fotos_usuarios'), $imageName);
         }
-        // $this->pre($imageName);
+
         $adicionar = $this->usuario->create(
             [
                 'foto' => '/img/fotos_usuarios/' . $imageName,
@@ -109,38 +108,28 @@ class UsuarioController extends Controller
         $update = $usuario->save();
 
         if ($update) {
-            $retorno = redirect()->back()->with('Sucesso', 'Dados alterados com sucesso!');
+            $retorno = redirect()->back()->with('Sucesso', 'Dados alterados com sucesso!!!');
         } else {
-            $retorno = redirect()->back()->with('Erro', 'Erro ao realizar a alteração das informações!');
+            $retorno = redirect()->back()->with('Erro', 'Erro ao realizar a alteração das informações!!!');
         }
-
         $retorno = $this->edit($usuario->id);
 
         return $retorno;
     }
 
-
-
-
-
-
-    public function destroy(Usuario $usuario)
+    public function destroy($usuario)
     {
-        $deletar = $this->usuario->where('id', $usuario->id)->delete();
+        $deletar = $this->usuario->where('id', $usuario)->delete();
         if ($deletar) {
-            return redirect()->route("usuario.index");
+            if ($usuario->foto) {
+                $fotoAnterior = public_path($usuario->foto);
+                if (File::exists($fotoAnterior)) {
+                    File::delete($fotoAnterior);
+                }
+            }
+
+            return redirect()->back()->with('Sucesso', 'Usuário deletado com sucesso!!!');
         }
-        return redirect()->back()->with('Erro', 'erro ao deletar o usuário');
-    }
-
-    public function pre($dado)
-    {
-        echo '<pre>';
-
-        echo var_dump($dado, true);
-
-
-        echo '</pre>';
-        die();
+        return redirect()->back()->with('Erro', 'Erro ao deletar o usuário!!!');
     }
 }

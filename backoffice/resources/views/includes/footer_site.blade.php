@@ -20,7 +20,7 @@
             <div class="col-12 col-md-" style="justify-content: center;display: flex;">
                 <div class="card background_cards" style="width: 25rem;height: 25rem;">
                     <div class="card-body d-flex justify-content-center align-items-center" style="">
-                        <img src="img/logo_body-removebg_amarelo.png"  alt="..." style="width: 100%;">
+                        <img src="img/imgs_site/logo_body-removebg_amarelo.png"  alt="..." style="width: 100%;">
                     </div>
                 </div>
             </div>

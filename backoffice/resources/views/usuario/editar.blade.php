@@ -9,32 +9,27 @@
             </div>
             <div class="row">
                 <div class="col col-md-12 col-sm-12 col-lg-12 col-xl-12">
-
-
-                    @if (session('Sucesso'))
-                        <div class="alert alert-success mt-3 ">
-                            {{ session('Sucesso') }}
-                        </div>
-                    @endif
-                    @if (session('Erro'))
-                        <div class="alert alert-danger mt-3 ">
-                            {{ session('Erro') }}
-                        </div>
-                    @endif
-
-
                     <div class="card shadow">
                         <div class="card-body">
-                            <form action="{{ route('usuario.update', ['usuario' => $usuario->id]) }}" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('usuario.update', ['usuario' => $usuario->id]) }}" method="POST"
+                                enctype="multipart/form-data">
                                 @csrf
                                 <input type="hidden" class="" name="_method" value="PUT">
 
                                 <div class="mb-3 form-group">
                                     <label for="">Foto de perfil</label>
                                     <div>
-                                        <img width="200" src="{{$usuario->foto}}" id="imgimagem"
-                                            style="cursor: pointer; border-radius: 16px" /><br><br>
-                                        <input hidden type="file" name="foto_perfil" id="foto" class="form-control hidden" >
+                                        @if (!empty($usuario->foto))
+                                            <img width="200" src="{{ $usuario->foto }}" id="imgimagem"
+                                                style="cursor: pointer; border-radius: 16px" />
+                                        @else
+                                            <img width="200" src="{{ asset('/img/user.jpg') }}" id="imgimagem"
+                                                style="cursor: pointer; border-radius: 16px" />
+                                        @endif
+                                        <br><br>
+
+                                        <input hidden type="file" name="foto_perfil" id="foto"
+                                            class="form-control hidden">
                                     </div>
                                     <script>
                                         $('#imgimagem').click(function() {
@@ -135,7 +130,8 @@
                             <form id="deleteForm" action="{{ route('usuario.destroy', ['usuario' => $usuario->id]) }}"
                                 method="POST">
                                 @csrf
-                                <input type="hidden" class="" name="_method" value="DELETE">
+                                @method('DELETE')
+
                                 <div class="row">
                                     <div class="col-12">
                                         <button type="button" id="deletarBtn" class="btn btn-primary">Deletar</button>
@@ -148,26 +144,29 @@
             </div>
         </div>
     </div>
+
     <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="deleteModalLabel">Confirmação de exclusão</h5>
+                    <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                    <h5 class="modal-title text-center" id="deleteModalLabel">Confirmação de exclusão</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <p>Você tem certeza que deseja excluir o usuário?</p>
+                    <p class="text-center">Você tem certeza que deseja excluir o usuário?</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                    <button type="button" id="confirmDeleteBtn" class="btn btn-danger">Excluir</button>
+                    <button type="button" id="confirmDeleteBtn" class="btn btn-danger">Sim, excluir usuário</button>
                 </div>
             </div>
         </div>
     </div>
+
     <script>
         document.getElementById('deletarBtn').addEventListener('click', function() {
             $('#deleteModal').modal('show');
@@ -185,11 +184,12 @@
                 })
                 .then(response => {
                     $('#deleteModal').modal('hide');
-                    window.location.href = {{ route('dashboard.index') }};
+                    window.location.href = '{{ route('dashboard.index') }}';
                 })
                 .catch(error => {
                     console.error('Erro ao enviar a requisição:', error);
                 });
         });
     </script>
+
 @endsection
