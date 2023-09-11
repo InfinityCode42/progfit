@@ -11,7 +11,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>Error</title>
-    <link rel="shortcut icon" type="image/x-icon" href="{{ URL::to('assets/img/favicon.png') }}">
+    {{-- <link rel="shortcut icon" type="image/x-icon" href="{{ URL::to('assets/img/favicon.png') }}"> --}}
     <link rel="stylesheet" href="{{ URL::to('assets/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ URL::to('assets/css/font-awesome.min.css') }}">
     <link rel="stylesheet" href="{{ URL::to('assets/css/line-awesome.min.css') }}">

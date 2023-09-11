@@ -11,7 +11,7 @@
     <meta name="robots" content="noindex, nofollow">
     <title>Admin template</title>
 
-    <link rel="shortcut icon" type="image/x-icon" href="{{ URL::to('assets/img/favicon.png') }}">
+    {{-- <link rel="shortcut icon" type="image/x-icon" href="{{ URL::to('assets/img/favicon.png') }}"> --}}
     <link rel="stylesheet" href="{{ URL::to('assets/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ URL::to('assets/css/font-awesome.min.css') }}">
     <link rel="stylesheet" href="{{ URL::to('assets/css/line-awesome.min.css') }}">
@@ -64,8 +64,8 @@
             </div>
 
             <a id="mobile_btn" class="mobile_btn" href="#sidebar"><i class="fa fa-bars"></i></a>
-            {{-- <ul class="nav user-menu">
-                <li class="nav-item">
+            <ul class="nav user-menu">
+                {{-- <li class="nav-item">
                     <div class="top-nav-search">
                         <a href="javascript:void(0);" class="responsive-search">
                             <i class="fa fa-search"></i>
@@ -75,9 +75,9 @@
                             <button class="btn" type="submit"><i class="fa fa-search"></i></button>
                         </form>
                     </div>
-                </li>
+                </li> --}}
 
-                <li class="nav-item dropdown has-arrow flag-nav">
+                {{-- <li class="nav-item dropdown has-arrow flag-nav">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
                         <img src="{{ URL::to('assets/img/flags/us.png') }}" alt="" height="20"> <span>English</span>
                     </a>
@@ -86,9 +86,9 @@
                             <img src="{{ URL::to('assets/img/flags/us.png') }}" alt="" height="16"> English
                         </a>
                     </div>
-                </li>
+                </li> --}}
 
-                <li class="nav-item dropdown">
+                {{-- <li class="nav-item dropdown">
                     <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
                         <i class="fa fa-bell-o"></i> <span class="badge badge-pill">3</span>
                     </a>
@@ -172,10 +172,10 @@
                             <a href="activities.html">View all Notifications</a>
                         </div>
                     </div>
-                </li>
+                </li> --}}
 
 
-                <li class="nav-item dropdown">
+                {{-- <li class="nav-item dropdown">
                     <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
                         <i class="fa fa-comment-o"></i> <span class="badge badge-pill">8</span>
                     </a>
@@ -277,30 +277,35 @@
                             <a href="chat.html">View all Messages</a>
                         </div>
                     </div>
-                </li>
+                </li> --}}
 
                 <li class="nav-item dropdown has-arrow main-drop">
                     <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-                        <span class="user-img"><img src="{{ URL::to('assets/img/profiles/avatar-21.jpg') }}" alt="">
+                        <span class="user-img"><img src="{{ URL::to('assets/img/profiles/') }}" alt="">
                             <span class="status online"></span></span>
                         <span>Admin</span>
                     </a>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="profile.html">My Profile</a>
-                        <a class="dropdown-item" href="settings.html">Settings</a>
-                        <a class="dropdown-item" href="login.html">Logout</a>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a class="dropdown-item" href="profile.html">Meu perfil</a>
+                        <a class="dropdown-item" href="settings.html">Configurações</a>
+                        <a class="dropdown-item" href="login.html">Sair</a>
                     </div>
                 </li>
-            </ul> --}}
+            </ul>
 
-            {{-- <div class="dropdown mobile-user-menu">
+            <div class="dropdown mobile-user-menu">
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
+
                 <div class="dropdown-menu dropdown-menu-right">
-                    <a class="dropdown-item" href="profile.html">My Profile</a>
-                    <a class="dropdown-item" href="settings.html">Settings</a>
-                    <a class="dropdown-item" href="login.html">Logout</a>
+                    <span class="user-img">
+                        <img src="{{ URL::to('assets/img/profiles/') }}" alt="">
+                        <span class="status online"></span></span>
+                    <span>Admin</span>
+                    <a class="dropdown-item" href="profile.html">Meu perfil</a>
+                    <a class="dropdown-item" href="settings.html">Configurações</a>
+                    <a class="dropdown-item" href="login.html">Sair</a>
                 </div>
-            </div> --}}
+            </div>
         </div>
 
         <!-- Sidebar -->

@@ -16,7 +16,6 @@ class Controller extends BaseController
 
         echo var_dump($dado, true);
 
-
         echo '</pre>';
         die();
     }

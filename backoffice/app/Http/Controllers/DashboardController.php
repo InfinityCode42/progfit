@@ -23,46 +23,8 @@ class DashboardController extends Controller
 
         $usuario = Usuario::where('tipo_usuario', 'cliente')->count();
 
-
         return view("dashboard/index", ['qtd_clientes' => $usuario]);
     }
 
-    public function create()
-    {
-
-    }
-
-    public function store(Request $request)
-    {
-
-    }
-
-    public function show(Usuario $usuario)
-    {
-
-    }
-
-    public function edit(Usuario $usuario)
-    {
-
-    }
-
-    public function update(Request $request, string $id)
-    {
-
-    }
-
-    public function destroy(Usuario $usuario)
-    {
-
-    }
-
-    public function pre($dado){
-        echo '<pre>';
-
-        echo var_dump($dado, true);
-
-        echo '</pre>';
-    }
 }
 

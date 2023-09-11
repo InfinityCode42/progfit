@@ -1,4 +1,4 @@
-<div class="container-fluid mt-5 py-5 px-sm-3 mt-5 px-md-5 text-white bg-secondary" id="contatos">
+<div class="container-fluid mt-5 py-5 px-sm-3 mt-5 px-md-5 text-white" id="contatos" style="background-color: black">
     <div class="row pt-5">
         <div class="col-lg-3 col-md-6 mb-5">
             <h4 class="mb-4 cor_dourado_site font-weight-bold">Contatos</h4>
